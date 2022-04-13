@@ -2,8 +2,8 @@ class usuario{
     constructor(nombre,apellido,libros,mascotas){
         this.nombre=nombre;
         this.apellido=apellido;
-        this.libros=[libros];
-        this.mascotas=[mascotas];
+        this.libros=libros;
+        this.mascotas=mascotas;
     }
 
     getFullName(){
@@ -15,7 +15,7 @@ class usuario{
     }
 
     countMascotas(){
-        console.log(`Tengo ${this.mascotas[0].length} mascotas`);
+        console.log(`Tengo ${this.mascotas.length} mascotas`);
     }
 
     addBook(){
@@ -23,7 +23,7 @@ class usuario{
     }
 
     getBooksNames(){
-        let books= this.libros[0].map((item)=>item.nombre);
+        let books= this.libros.map((item)=>item.nombre);
         console.log('Mis libros favoritos son ' + books[0] +' y '+ books[1]);
     }
 }
