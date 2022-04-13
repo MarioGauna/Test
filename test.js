@@ -11,7 +11,7 @@ class usuario{
     }
 
     addMascota(){
-        
+        puppy.push(this.mascotas)
     }
 
     countMascotas(){
@@ -19,28 +19,28 @@ class usuario{
     }
 
     addBook(){
-
+        books.push(this.libros)
     }
 
     getBooksNames(){
-        let books= this.libros.map((item)=>item.nombre);
-        console.log('Mis libros favoritos son ' + books[0] +' y '+ books[1]);
+        let texts= this.libros.map((item)=>item.nombre);
+        console.log('Mis libros favoritos son ' + texts[0] +' y '+ texts[1]);
     }
 }
 
-//let books=[{nombre:'El señor de las moscas', author:'William Golding'},{nombre:'Fundación', author:'Isaac Asimov'}]
+let books=[{nombre:'El señor de las moscas', author:'William Golding'},{nombre:'Fundación', author:'Isaac Asimov'}]
 
-//let puppy=["Lola","Pepo","lara","Fluffy"]
+let puppy=["Lola","Pepo","Lara"]
 
-const user= new usuario(`Elon`,`Musk`,[{nombre:'El señor de las moscas', author:'William Golding'},{nombre:'Fundación', author:'Isaac Asimov'}], ["Lola","Pepo","lara","Fluffy"])
+const user= new usuario(`Elon`,`Musk`, books, puppy)
 
 user.getFullName();
 
-//user.addMascota();
+user.addMascota();
 
 user.countMascotas();
 
-//user.addBook();
+user.addBook();
 
 user.getBooksNames();
 
