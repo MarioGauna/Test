@@ -1,5 +1,3 @@
-const mascota=[];
-
 class usuario{
     constructor(nombre,apellido,libros,mascotas){
         this.nombre=nombre;
