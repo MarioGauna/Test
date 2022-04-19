@@ -7,24 +7,24 @@ class usuario{
     }
 
     getFullName(){
-        console.log(`Mi nombre es ${this.nombre} ${this.apellido}`);
+        console.log(`Mi nombre es ${this.nombre} ${this.apellido}`);   //BIEN
     }
 
     addMascota(){
-        puppy.push(this.mascotas)
+        this.mascotas.push(newPet)
     }
 
     countMascotas(){
-        console.log(`Tengo ${this.mascotas.length} mascotas`);
+        console.log(`Tengo ${this.mascotas.length} mascotas`);   //BIEN
     }
 
     addBook(){
-        books.push(this.libros)
+        this.libros.push(newBook)
     }
 
     getBooksNames(){
         let texts= this.libros.map((item)=>item.nombre);
-        console.log('Mis libros favoritos son ' + texts[0] +' y '+ texts[1]);
+        console.log(texts);
     }
 }
 
@@ -34,13 +34,17 @@ let puppy=["Lola","Pepo","Lara"]
 
 const user= new usuario(`Elon`,`Musk`, books, puppy)
 
+let newPet= "Fluffy";
+
+let newBook={nombre:'El arte de la guerra', author:'Sun Tzu'};
+
 user.getFullName();
 
-user.addMascota();
+user.addMascota(newPet);
 
 user.countMascotas();
 
-user.addBook();
+user.addBook(newBook);
 
 user.getBooksNames();
 
