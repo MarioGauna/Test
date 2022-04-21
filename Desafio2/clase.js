@@ -53,8 +53,7 @@ class contenedor{
             const data=await fs.promises.readFile(this.fileName);
             const dataJson=JSON.parse(data);
             let res=dataJson.find(x => x.id === numId);
-            const final=JSON.stringify(res);
-            console.log(res)
+            res != numId ? console.log(res) : console.log('Error ID no encontrado');
         }catch(error){
             console.log('Error',error);
         }
