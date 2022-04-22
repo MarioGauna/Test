@@ -28,15 +28,27 @@ class usuario{
     }
 }
 
-let books=[{nombre:'El señor de las moscas', author:'William Golding'},{nombre:'Fundación', author:'Isaac Asimov'}]
+let books=[{nombre:'El señor de las moscas', author:'William Golding'},
+            {nombre:'Fundación', author:'Isaac Asimov'},
+            {nombre:'Cien años de soledad', author:'Gabriel García Márquez'},
+            {nombre:'Martin Fierro', author:'Jose Hernández'},
+            {nombre:'Rayuela', author:'Julio Cortázar'}
+        ]
 
-let puppy=["Lola","Pepo","Lara"]
+        let puppy=["Lola","Pepo","Lara"]
 
 const user= new usuario(`Elon`,`Musk`, books, puppy)
+
+
+// Datos Agregados
+
 
 let newPet= "Fluffy";
 
 let newBook={nombre:'El arte de la guerra', author:'Sun Tzu'};
+
+
+// Llamada de métodos
 
 user.getFullName();
 
