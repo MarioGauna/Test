@@ -10,7 +10,7 @@ class usuario{
         console.log(`Mi nombre es ${this.nombre} ${this.apellido}`);   //BIEN
     }
 
-    addMascota(){
+    addMascota(newPet){
         this.mascotas.push(newPet)
     }
 
@@ -18,7 +18,7 @@ class usuario{
         console.log(`Tengo ${this.mascotas.length} mascotas`);   //BIEN
     }
 
-    addBook(){
+    addBook(newBook){
         this.libros.push(newBook)
     }
 
@@ -35,28 +35,20 @@ let books=[{nombre:'El señor de las moscas', author:'William Golding'},
             {nombre:'Rayuela', author:'Julio Cortázar'}
         ]
 
-        let puppy=["Lola","Pepo","Lara"]
+let puppy=["Lola","Pepo","Lara"]
 
 const user= new usuario(`Elon`,`Musk`, books, puppy)
-
-
-// Datos Agregados
-
-
-let newPet= "Fluffy";
-
-let newBook={nombre:'El arte de la guerra', author:'Sun Tzu'};
 
 
 // Llamada de métodos
 
 user.getFullName();
 
-user.addMascota(newPet);
+user.addMascota("Fluffy");
 
 user.countMascotas();
 
-user.addBook(newBook);
+user.addBook({nombre:'El arte de la guerra', author:'Sun Tzu'});
 
 user.getBooksNames();
 
