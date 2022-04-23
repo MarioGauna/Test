@@ -66,5 +66,5 @@ class contenedor{
 const datos= new contenedor('./Desafio2/productos.txt');
 
 //datos.leer();
-datos.getById(1);
+datos.getById(7);   // Si pongo un id fuera de la lista me tira undefined
 //datos.deleteAll();
