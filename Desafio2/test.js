@@ -13,9 +13,9 @@ let numId=1;
 
 //***************** deleteById ********************
 
-//let resultado=manipulable.filter((item) => item.id !== numId);
+let resultado=manipulable.filter((item) => item.id !== numId);
 
-//console.log(resultado)
+console.log(resultado)
 
 //let final=JSON.stringify(resultado)
 
