@@ -37,6 +37,7 @@ const fs = require('fs');
 
 
 class contenedor{
+    static countId=1;
     constructor(archivo){
         this.fileName= archivo;
     }
@@ -48,26 +49,38 @@ class contenedor{
     async save(newDato){
         const data =await fs.promises.readFile(this.fileName);
         const dataJson=JSON.parse(data);
-        // for (let i=0;i<=dataJson.length;i++){
-            
-        // }
-        let newId= 1;
-        newDato.id=newId;
-        dataJson.push(newDato)
-        console.log(dataJson)
+        if(dataJson.length === 0){
+            let newId=countId;
+            newDato.id=newId;
+            dataJson.push(newDato);
+            console.log('Articulo agregado con ID:' , ${newId});
+        }else{
+            last_element = dataJson[dataJson.length - 1];
+            let newId= last_element.id + countId;
+            newDato.id=newId;
+            dataJson.push(newDato);
+            console.log('Articulo agregado con ID:' ${newId});
+        }
     }
     async getById(numId){
         try{
             const data=await fs.promises.readFile(this.fileName);
             const dataJson=JSON.parse(data);
             let res=dataJson.find(x => x.id === numId);
-            res != numId ? console.log(res) : console.log('Error ID no encontrado');
+            res === undefined || res === null ? console.log('Error ID no encontrado'): console.log(res);
         }catch(error){
             console.log('Error',error);
         }
     }
     async deleteAll(){
+        //Metodo 1
         fs.writeFileSync('./Desafio2/productos.txt','', function(){console.log('Contenido Borrado')})
+        // Metodo 2
+        array.length=0;
+        console.log('Contenido Borrado')
+
+        //agregue 2 metodos porque dice borrar objetos pero no dice nada del 
+        //array. El primero borra todo y el segundo borra solo los objetos.
     }
 }
 
