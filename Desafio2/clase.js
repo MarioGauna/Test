@@ -45,8 +45,16 @@ class contenedor{
         const dataJson=JSON.parse(data);
         console.log(dataJson);
     }
-    async save(){
-
+    async save(newDato){
+        const data =await fs.promises.readFile(this.fileName);
+        const dataJson=JSON.parse(data);
+        // for (let i=0;i<=dataJson.length;i++){
+            
+        // }
+        let newId= 1;
+        newDato.id=newId;
+        dataJson.push(newDato)
+        console.log(dataJson)
     }
     async getById(numId){
         try{
@@ -65,6 +73,9 @@ class contenedor{
 
 const datos= new contenedor('./Desafio2/productos.txt');
 
+
+datos.save({title:'lapicera',price:24.99});
+
 //datos.leer();
-datos.getById(7);   // Si pongo un id fuera de la lista me tira undefined
+//datos.getById(1);   // Si pongo un id fuera de la lista me tira undefined
 //datos.deleteAll();

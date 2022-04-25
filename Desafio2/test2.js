@@ -1,11 +1,9 @@
 const fs = require('fs');
 
-let prueba=require('./test1.js');
+import contenedor from './test1.js';
 
 try {
-    const data =await fs.promises.readFile(this.fileName);
-    const dataJson=JSON.parse(data);
-    prueba.leer(dataJson)
+    new contenedor('./Desafio2/productos.txt')
 } catch (error) {
     console.log(error)
 }
