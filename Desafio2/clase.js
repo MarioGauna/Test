@@ -41,11 +41,6 @@ class contenedor{
     constructor(archivo){
         this.fileName= archivo;
     }
-    async leer(){
-        const data =await fs.promises.readFile(this.fileName);
-        const dataJson=JSON.parse(data);
-        console.log(dataJson);
-    }
     async save(newDato){
         const data =await fs.promises.readFile(this.fileName);
         const dataJson=JSON.parse(data);
@@ -53,12 +48,16 @@ class contenedor{
             let newId=countId;
             newDato.id=newId;
             dataJson.push(newDato);
+            const dataJsonFinal=JSON.stringify(dataJson)
+            fs.promises.writeFile('./Desafio2/productos.txt',dataJsonFinal)
             console.log('Articulo agregado con ID:' , ${newId});
         }else{
             last_element = dataJson[dataJson.length - 1];
             let newId= last_element.id + countId;
             newDato.id=newId;
             dataJson.push(newDato);
+            const dataJsonFinal=JSON.stringify(dataJson)
+            fs.promises.writeFile('./Desafio2/productos.txt',dataJsonFinal)
             console.log('Articulo agregado con ID:' ${newId});
         }
     }
@@ -71,6 +70,19 @@ class contenedor{
         }catch(error){
             console.log('Error',error);
         }
+    }
+    async getAll(){
+        const data =await fs.promises.readFile(this.fileName);
+        const dataJson=JSON.parse(data);
+        console.log(dataJson);
+    }
+    async deleteById(numId){
+        const data =await fs.promises.readFile(this.fileName);
+        const dataJson=JSON.parse(data);
+        let newData=dataJson.filter((item) => item.id !== numId);
+        const dataJsonFinal=JSON.stringify(newData);
+        fs.promises.writeFile('./Desafio2/productos.txt',dataJsonFinal)
+        console.log('Articulo Borrado');
     }
     async deleteAll(){
         //Metodo 1
@@ -90,5 +102,5 @@ const datos= new contenedor('./Desafio2/productos.txt');
 datos.save({title:'lapicera',price:24.99});
 
 //datos.leer();
-//datos.getById(1);   // Si pongo un id fuera de la lista me tira undefined
+//datos.getById(1);
 //datos.deleteAll();
