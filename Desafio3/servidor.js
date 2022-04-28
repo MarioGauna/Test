@@ -1,22 +1,30 @@
-const http=require('http')
-//const app=express();
+import express  from 'express';
 
-const mensaje=()=>{
-    const hora=new Date().getHours();
-    if(hora >=6 && hora <=12){
-        return "Buenos Dias!"
-    }else if(hora >=13 && hora <=19){
-        return "Buenas Tardes!"
-    }else{
-        return "Buenas noches!"
-    }
-}
+import contenedor from './clase.js';
 
-const app=http.createServer((req,res)=>{
-    res.end(mensaje())
-})
+const app=express();
+
+// app.set('port', process.env.PORT || 8080);
 
 const port=8080;
+
 app.listen(port);
+
 console.log(`Servidor HTTP escuchando en el puerto ${port}`)
 
+
+const main =()=>{
+    const datos= new contenedor('./productos.txt');
+    datos.getAll();
+    datos.getRandom();
+}
+main();
+
+
+app.get('/productos',(req,res)=>{
+    res.send('Lista Completa')
+})
+
+app.get('/productoRandom',(req,res)=>{
+    res.send('Producto Random')
+})
