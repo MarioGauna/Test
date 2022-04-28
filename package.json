@@ -2,7 +2,7 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "clase.js",
+  "main": "servidor.js",
   "type": "module",
   "scripts": {
     "start": "nodemon servidor.js",

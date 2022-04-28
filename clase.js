@@ -1,5 +1,5 @@
-//import fs from 'fs';
-const fs=require('fs');
+import fs from 'fs';
+//const fs=require('fs');
 
 export default class contenedor{
     constructor(archivo){
