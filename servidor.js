@@ -1,8 +1,8 @@
-import express  from 'express';
-import contenedor from './clase.js';
+//import express  from 'express';
+//import contenedor from './clase.js';
 
-//const express=require('express')
-//const contenedor=require('./clase.js')
+const express=require('express')
+const contenedor=require('./clase.js')
 const app=express();
 
 // app.set('port', process.env.PORT || 8080);

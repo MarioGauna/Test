@@ -1,7 +1,7 @@
-import fs from 'fs';
-//const fs=require('fs');
+//import fs from 'fs';
+const fs=require('fs');
 
-export default class contenedor{
+class contenedor{
     constructor(archivo){
         this.fileName= archivo;
     }
@@ -93,3 +93,5 @@ export default class contenedor{
         }
     }
 }
+
+module.exports=contenedor;
