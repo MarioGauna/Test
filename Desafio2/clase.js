@@ -1,7 +1,6 @@
-const fs = require('fs');
+import fs from 'fs';
 
 export default class contenedor{
-    static countId=1;
     constructor(archivo){
         this.fileName= archivo;
     }
@@ -9,21 +8,22 @@ export default class contenedor{
         try{
             const data =await fs.promises.readFile(this.fileName);
             const dataJson=JSON.parse(data);
+            let countId=1;
             if(dataJson.length === 0){
                 let newId=countId;
                 newDato.id=newId;
                 dataJson.push(newDato);
                 const dataJsonFinal=JSON.stringify(dataJson)
-                fs.promises.writeFile('./Desafio2/productos.txt',dataJsonFinal)
-                console.log('Articulo agregado con ID:');
+                fs.promises.writeFile('./productos.txt',dataJsonFinal)
+                console.log('Articulo agregado con ID:', newId, '\n');
             }else{
-                last_element = dataJson[dataJson.length - 1];
+                let last_element = dataJson[dataJson.length - 1];
                 let newId= last_element.id + countId;
                 newDato.id=newId;
                 dataJson.push(newDato);
                 const dataJsonFinal=JSON.stringify(dataJson)
-                fs.promises.writeFile('./Desafio2/productos.txt',dataJsonFinal)
-                console.log('Articulo agregado con ID:');
+                fs.promises.writeFile('./productos.txt',dataJsonFinal)
+                console.log('Articulo agregado con ID:', newId, '\n');
             } 
         }catch(error){
             console.log('Hubo un error al guardar el articulo',error);
@@ -35,7 +35,7 @@ export default class contenedor{
             const data=await fs.promises.readFile(this.fileName);
             const dataJson=JSON.parse(data);
             let res=dataJson.find(x => x.id === numId);
-            res === undefined || res === null ? console.log('Error ID no encontrado'): console.log(res);
+            res === undefined || res === null ? console.log('Error ID no encontrado', '\n'): console.log(res, '\n');
         }catch(error){
             console.log('Hubo un error al obtener el articulo seleccionado',error);
         }
@@ -54,19 +54,28 @@ export default class contenedor{
         try {
             const data =await fs.promises.readFile(this.fileName);
             const dataJson=JSON.parse(data);
-            let newData=dataJson.filter((item) => item.id !== numId);
-            const dataJsonFinal=JSON.stringify(newData);
-            fs.promises.writeFile('./Desafio2/productos.txt',dataJsonFinal)
-        console.log('Articulo Borrado');
+            let res=dataJson.find(x => x.id === numId);
+            if(res === undefined){
+                console.log('Error ID no encontrado')
+            }else{
+                let newData=dataJson.filter((item) => item.id != numId);
+                const dataJsonFinal=JSON.stringify(newData);
+                fs.promises.writeFile('./productos.txt',dataJsonFinal)
+                console.log('Articulo Borrado', '\n');
+            }
         } catch (error) {
             console.log('Hubo un error al borrar el articulo',error);
         }
-        
     }
     async deleteAll(){
         try {
-            await fs.promises.writeFile('./Desafio2/productos.txt','')
-            console.log('Base de datos borrada');
+            let data =await fs.promises.readFile(this.fileName);
+            let dataJson=JSON.parse(data);
+            dataJson.length=0;
+            fs.promises.writeFile('./productos.txt',dataJson)
+            dataJson='[]';
+            fs.promises.appendFile('./productos.txt',dataJson)
+            console.log('Base de datos borrada', '\n');
         } catch (error) {
             console.log('Hubo un error al borrar la base de datos',error);
         }
