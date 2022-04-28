@@ -8,11 +8,11 @@ const app=express();
 // app.set('port', process.env.PORT || 8080);
 
 
-const port=8080;
+let PORT= process.env.PORT || 8080;
 
-app.listen(port);
+app.listen(PORT);
 
-console.log(`Servidor HTTP escuchando en el puerto ${port}`)
+console.log(`Servidor HTTP escuchando en el puerto ${PORT}`)
 
 
 const main =()=>{
