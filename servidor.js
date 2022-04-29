@@ -22,6 +22,9 @@ const main =()=>{
 }
 main();
 
+app.get('/',(req,res)=>{
+    res.send('<h1>Desafío 3</h1>')
+})
 
 app.get('/productos',(req,res)=>{
     res.send('Lista Completa')
