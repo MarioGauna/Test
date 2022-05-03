@@ -18,15 +18,21 @@ app.get('/',(req,res)=>{
     res.send('<h1>Desafío 3</h1>')
 })
 
-const main = async()=>{
+const all = async()=>{
     const datos= new contenedor('./productos.txt');
     let res1= await datos.getAll();
-    let res2= await datos.getRandom();
     app.get('/productos',(req,res)=>{
         res.send(res1)
     })
+}
+all();
+
+const random = async()=>{
+    const datos= new contenedor('./productos.txt');
+    let res2= await datos.getAll();
+    let rDom = res2[Math.floor(Math.random()*res2.length)];
     app.get('/productoRandom',(req,res)=>{
-        res.send(res2)
+        res.send(rDom)
     })
 }
-main();
+random();

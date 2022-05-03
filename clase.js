@@ -81,17 +81,16 @@ export default class contenedor{
             console.log('Hubo un error al borrar la base de datos',error);
         }
     }
-    async getRandom(){
-        try {
-            let data =await fs.promises.readFile(this.fileName);
-            let dataJson=JSON.parse(data);
-            let rDom = dataJson[Math.floor(Math.random()*dataJson.length)];
-            const dataJsonFinal=JSON.stringify(rDom);
-            return dataJsonFinal;
-        } catch (error) {
-            console.log('Hubo un error al obtener el articulo seleccionado',error);
-        }
-    }
+    // async getRandom(){
+    //     try {
+    //         let data =await fs.promises.readFile(this.fileName);
+    //         let dataJson=JSON.parse(data);
+    //         let rDom = dataJson[Math.floor(Math.random()*dataJson.length)];
+    //         return rDom;
+    //     } catch (error) {
+    //         console.log('Hubo un error al obtener el articulo seleccionado',error);
+    //     }
+    // }
 }
 
 //module.exports=contenedor;
