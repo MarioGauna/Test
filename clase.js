@@ -45,7 +45,7 @@ export default class contenedor{
         try {
             const data =await fs.promises.readFile(this.fileName);
             const dataJson=JSON.parse(data);
-            console.log(dataJson);
+            return dataJson;
         } catch (error) {
             console.log('Hubo un error al mostrar la base de datos',error);
         }
@@ -87,7 +87,7 @@ export default class contenedor{
             let dataJson=JSON.parse(data);
             let rDom = dataJson[Math.floor(Math.random()*dataJson.length)];
             const dataJsonFinal=JSON.stringify(rDom);
-            console.log(dataJsonFinal);
+            return dataJsonFinal;
         } catch (error) {
             console.log('Hubo un error al obtener el articulo seleccionado',error);
         }

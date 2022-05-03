@@ -14,22 +14,19 @@ app.listen(PORT);
 
 console.log(`Servidor HTTP escuchando en el puerto ${PORT}`)
 
-
-const main =()=>{
-    const datos= new contenedor('./productos.txt');
-    datos.getAll();
-    datos.getRandom();
-}
-main();
-
 app.get('/',(req,res)=>{
     res.send('<h1>Desafío 3</h1>')
 })
 
-app.get('/productos',(req,res)=>{
-    res.send('Lista Completa')
-})
-
-app.get('/productoRandom',(req,res)=>{
-    res.send('Producto Random')
-})
+const main = async()=>{
+    const datos= new contenedor('./productos.txt');
+    let res1= await datos.getAll();
+    let res2= await datos.getRandom();
+    app.get('/productos',(req,res)=>{
+        res.send(res1)
+    })
+    app.get('/productoRandom',(req,res)=>{
+        res.send(res2)
+    })
+}
+main();
