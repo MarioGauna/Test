@@ -1,9 +1,10 @@
-import fs from 'fs';
-//const fs=require('fs');
+//import fs from 'fs';
+const fs=require('fs');
 
-export default class contenedor{
-    constructor(archivo){
-        this.fileName= archivo;
+//export default 
+class contenedor{
+    constructor(fileName){
+        this.fileName= fileName;
     }
     async save(newDato){
         try{
@@ -81,16 +82,6 @@ export default class contenedor{
             console.log('Hubo un error al borrar la base de datos',error);
         }
     }
-    // async getRandom(){
-    //     try {
-    //         let data =await fs.promises.readFile(this.fileName);
-    //         let dataJson=JSON.parse(data);
-    //         let rDom = dataJson[Math.floor(Math.random()*dataJson.length)];
-    //         return rDom;
-    //     } catch (error) {
-    //         console.log('Hubo un error al obtener el articulo seleccionado',error);
-    //     }
-    // }
 }
 
-//module.exports=contenedor;
+module.exports=contenedor;

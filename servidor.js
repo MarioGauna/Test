@@ -1,8 +1,11 @@
-import express  from 'express';
-import contenedor from './clase.js';
+// import express  from 'express';
+// import contenedor from './clase.js';
 
-//const express=require('express')
-//const contenedor=require('./clase.js')
+const express=require('express');
+const contenedor = require('./clase.js');
+const database = new contenedor('./productos.txt');
+
+
 const app=express();
 
 // app.set('port', process.env.PORT || 8080);
@@ -18,21 +21,13 @@ app.get('/',(req,res)=>{
     res.send('<h1>Desafío 3</h1>')
 })
 
-const all = async()=>{
-    const datos= new contenedor('./productos.txt');
-    let res1= await datos.getAll();
-    app.get('/productos',(req,res)=>{
-        res.send(res1)
-    })
-}
-all();
+app.get('/productos',async(req,res)=>{
+    let result= await database.getAll();
+    res.json({result});
+})
 
-const random = async()=>{
-    const datos= new contenedor('./productos.txt');
-    let res2= await datos.getAll();
-    let rDom = res2[Math.floor(Math.random()*res2.length)];
-    app.get('/productoRandom',(req,res)=>{
-        res.send(rDom)
-    })
-}
-random();
+app.get('/productoRandom',async(req,res)=>{
+    let result= await database.getAll();
+    let rDom = result[Math.floor(Math.random()*result.length)];
+    res.json({rDom});
+})
